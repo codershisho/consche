@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  nuxt:
+    build: ../../../docker/nuxt
+    ports:
+      - 9000:3000
+    volumes:
+      - ./:/var/service/consche
+      - node_modules_volume:/var/service/consche/node_modules
+    working_dir: /var/service/consche
+    tty: true
+    environment:
+      - HOST=0.0.0.0
+      - CHOKIDAR_USEPOLLING=true
+
+volumes:
+  node_modules_volume:
